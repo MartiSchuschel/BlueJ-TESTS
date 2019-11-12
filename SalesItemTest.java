@@ -18,6 +18,8 @@ class SalesItemTest {
 
     @Test
     void getNumberOfComments() {
+        SalesItem salesIte1 = new SalesItem("Java for Dummies", 5000);
+        assertEquals(0, salesIte1.getNumberOfComments());
     }
 
     @Test
