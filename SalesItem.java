@@ -130,26 +130,34 @@ public class SalesItem
      */
     public Comment findMostHelpfulComment()
     {
-        Iterator<Comment> it = comments.iterator();
-        Comment best = it.next();
-        while(it.hasNext()) {
-            Comment current = it.next();
-            if(current.getVoteCount() > best.getVoteCount()) {
-                best = current;
+        Comment best = null;
+        if (comments.size() == 0){
+            return best;
+        }
+
+        else {
+
+            Iterator<Comment> it = comments.iterator();
+            best = it.next();
+            while (it.hasNext()) {
+                Comment current = it.next();
+                if (current.getVoteCount() > best.getVoteCount()) {
+                    best = current;
+                }
             }
         }
         return best;
     }
-    
+
     /**
      * Check whether the given rating is invalid. Return true if it is invalid.
      * Valid ratings are in the range [1..5].
      */
     private boolean ratingInvalid(int rating)
     {
-        return rating < 0 || rating > 5;
+        return rating <= 0 || rating > 5;
     }
-    
+
     /**
      * Find the comment by the author with the given name.
      * 
